@@ -8,6 +8,7 @@ namespace SignalRExampleProject.Hubs
 
         public async Task SendNameAsync(string name)
         {
+            Names.Add(name);
             await Clients.All.SendAsync("ReceiveName", name);
         }
 
