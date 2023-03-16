@@ -14,19 +14,19 @@
         $(document).ready(() => {
             var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7155/MyHub").build();
 
-            $("#conStatus").text(connection.connectionState);
+            $("#conStatus").text(connection.state);
 
             connection.start().then(() => {
-                $("#conStatus").text(connection.connectionState);
+                $("#conStatus").text(connection.state);
             }).catch((err) => {
                 console.log(err)
             });
 
-            $("#conStatus").text(connection.connectionState);
+            $("#conStatus").text(connection.state);
 
 
             $("#btnSave").click(() => {
-                connection.invoke("SendName", $("#txtName").val()).catch((err) => {
+                connection.invoke("SendNameAsync", $("#txtName").val()).catch((err) => {
                     console.log(err)
                 });
             })
